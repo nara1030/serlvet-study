@@ -21,7 +21,9 @@ project
   
 ```
 2. [doGet and doPost in Servlets](https://stackoverflow.com/questions/2349633/doget-and-dopost-in-servlets)
-3. 메이븐 프로젝트가 아닌, 즉 `pom.xml`이 없는 경우기에 JSTL을 사용하기 위해 직접 라이브러리를 추가해주어야 한다. 이때, `WebContent > WEB-INF > lib` 폴더에 jar 파일을 위치시켜야 한다.
+3. JSTL을 사용하기 위해 다음 두 가지를 지켜야 한다.
+	* 메이븐 프로젝트가 아닌, 즉 `pom.xml`이 없는 경우기에 JSTL을 사용하기 위해 직접 라이브러리를 추가해주어야 한다. 이때, `WebContent > WEB-INF > lib` 폴더에 jar 파일을 위치시켜야 한다.
+	* 자바 클래스에 `getter`를 추가해야 한다. 이때 메소드뿐 아니라 클래스 접근제어자도 `public`이어야 한다.
 4. 아래 사항을 신경쓴다.
 	* HTML, CSS, JS를 분리한다.
 		* [window.onload vs. document.onload](https://stackoverflow.com/questions/588040/window-onload-vs-document-onload)
