@@ -16,7 +16,7 @@
 			<input type="text" name="emp_name" id="emp_name" placeholder="이름을 입력하세요.">
 			<select name="emp_rank" id="emp_rank">
 				<option value="" selected>선택</option>
-				<option value="1">사원</option>
+				<option value="1">대리</option>
 				<option value="2">과장</option>
 				<option value="3">차장</option>
 			</select>

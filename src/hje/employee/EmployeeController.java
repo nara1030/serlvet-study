@@ -1,6 +1,10 @@
 package hje.employee;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hje.employee.service.Employees;
+import hje.employee.service.Employees.Employee;
 
 public class EmployeeController extends HttpServlet {
 	@Override
@@ -30,7 +35,22 @@ public class EmployeeController extends HttpServlet {
 	private void doGetProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Employees employees = new Employees();
 		
-		req.setAttribute("employees", employees.getEmployees());
+		String name = (req.getParameter("empName") == null) ? "" : URLDecoder.decode(req.getParameter("empName"), "UTF-8");
+		// String rank = (req.getParameter("empRank") == null) ? "" : URLDecoder.decode(req.getParameter("empRank"), "UTF-8");
+		
+		List<Employee> result = new ArrayList<Employee>();
+		if ("".equals(name)) {
+			result = employees.getEmployees();
+		} else {
+			for (Employee employee : employees.getEmployees()) {
+				if (employee.getName().contains(name)) {
+					result.add(employee);
+				}
+			}
+		}
+		
+		System.out.println(result);
+		req.setAttribute("employees", result);
 		
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/employee/employee.jsp");
 		requestDispatcher.forward(req, resp);
