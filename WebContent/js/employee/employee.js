@@ -1,5 +1,5 @@
 const _program = {
-	search : "/employee.do",
+	search : "/employee.json",
 }
 
 function search(empName, empRank) {
@@ -9,12 +9,31 @@ function search(empName, empRank) {
 	const queryString = '?empName=' + name + '&empRank=' + rank;
 	
 	const xhr = new XMLHttpRequest();
-	// xhr.open('GET', url + queryString, true);
-	xhr.open('GET', url + queryString);
+	xhr.open('GET', url + queryString, true);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			console.log(xhr.responseText);
-			// document.getElementsByTagName('html')[0].innerHTML = xhr.responseText;
+			const data = JSON.parse(xhr.responseText);
+			console.log(data);
+			
+			document.getElementById("grid_table").innerHTML = "";
+			
+			let str = "";
+			if (data.length !== 0) {
+				for (let i = 0, len = data.length; i < len; i++) {
+					str += "<tr><td>";
+					str += data[i].id;
+					str += "</td>";
+					str += "<td>";
+					str += data[i].name;
+					str += "</td>";
+					str += "<td>";
+					str += data[i].rank;
+					str += "</td></tr>";
+				}
+			}
+			
+			document.getElementById("grid_table").innerHTML = str;
 		}
 	}
 	// xhr.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");

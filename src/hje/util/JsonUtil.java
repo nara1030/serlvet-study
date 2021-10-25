@@ -11,7 +11,7 @@ public class JsonUtil {
 	 * @param list
 	 * @return
 	 */
-	public String toJsonString(List list) {
+	public static String toJsonString(List list) {
 		Gson gson = new Gson();
 		String result = gson.toJson(list);
 		

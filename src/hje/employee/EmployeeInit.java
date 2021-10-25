@@ -14,14 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import hje.employee.service.Employees;
 import hje.employee.service.Employees.Employee;
-import hje.util.JsonUtil;
 
-public class EmployeeController extends HttpServlet {
+public class EmployeeInit extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// super.doGet(req, resp);
 		
-		System.out.println("***** 직원 데이터 갱신 *****");		
+		System.out.println("***** 직원 관리 화면 로드 *****");		
 		doGetProcess(req, resp);
 	}
 	
@@ -35,23 +34,9 @@ public class EmployeeController extends HttpServlet {
 	 */
 	private void doGetProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Employees employees = new Employees();
+		req.setAttribute("employees", employees.getEmployees());
 		
-		String name = (req.getParameter("empName") == null) ? "" : URLDecoder.decode(req.getParameter("empName"), "UTF-8");
-		// String rank = (req.getParameter("empRank") == null) ? "" : URLDecoder.decode(req.getParameter("empRank"), "UTF-8");
-		
-		List<Employee> result = new ArrayList<Employee>();
-		if ("".equals(name)) {
-			result = employees.getEmployees();
-		} else {
-			for (Employee employee : employees.getEmployees()) {
-				if (employee.getName().contains(name)) {
-					result.add(employee);
-				}
-			}
-		}
-		
-		resp.setContentType("application/json");
-		resp.setCharacterEncoding("UTF-8");
-		resp.getWriter().write(JsonUtil.toJsonString(result));
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/employee/employee.jsp");
+		requestDispatcher.forward(req, resp);
 	}
 }

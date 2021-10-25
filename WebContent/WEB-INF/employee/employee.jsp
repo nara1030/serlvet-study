@@ -26,7 +26,7 @@
 	<div>
 		직원 목록
 	</div>
-	<table>
+	<table id="grid_table">
 		<c:forEach items="${employees}" var="employee">
 			<tr>
 				<td>${employee.id}</td>

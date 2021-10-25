@@ -3,12 +3,21 @@
   <display-name>hje_servlet</display-name>
   
   <servlet>
-  	<servlet-name>employee</servlet-name>
+  	<servlet-name>initEmployee</servlet-name>
+  	<servlet-class>hje.employee.EmployeeInit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>initEmployee</servlet-name>
+  	<url-pattern>/employee.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>getEmployee</servlet-name>
   	<servlet-class>hje.employee.EmployeeController</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>employee</servlet-name>
-  	<url-pattern>/employee.do</url-pattern>
+  	<servlet-name>getEmployee</servlet-name>
+  	<url-pattern>/employee.json</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

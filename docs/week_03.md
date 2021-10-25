@@ -7,7 +7,17 @@
     완성된 JSP 페이지를 반환[3][4]하다보니 그리드만 갱신해주기가 쉽지 않았다.
   - 지금껏 스프링을 사용하다보니 그냥 별 생각 없었던 것 같은데,
     이 경우 어떤 식으로 해결해야할지 생각해봐야 한다.
-2.
+2. Dynamic Web Project
+  - 버전에 따라 webapp 혹은 WebContent 폴더가 생기는 것 같다.
+  - 구버전이 WebContent이다.
+3. 인코딩
+  - 프로젝트 우클릭 > Properties > Resource > Text file encoding > UTF-8
+  - JSP
+    <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <meta charset="UTF-8">
+4. 서블릿에서 JSON 객체를 반환하기 위해 응답 객체의 출력 스트림에 JSON 객체를 쓴다.
+5. 처음 화면을 로드하는 서블릿과 데이터를 갱신하는 서블릿을 꼭 따로 만들어야 하나?
 ```
 
 - - -
