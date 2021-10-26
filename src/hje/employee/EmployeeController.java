@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import hje.employee.service.Employees;
 import hje.employee.service.Employees.Employee;
-import hje.util.JsonUtil;
+import hje.util.ResponseUtil;
 
 public class EmployeeController extends HttpServlet {
 	@Override
@@ -50,8 +50,6 @@ public class EmployeeController extends HttpServlet {
 			}
 		}
 		
-		resp.setContentType("application/json");
-		resp.setCharacterEncoding("UTF-8");
-		resp.getWriter().write(JsonUtil.toJsonString(result));
+		ResponseUtil.responseToJson(resp, result);
 	}
 }

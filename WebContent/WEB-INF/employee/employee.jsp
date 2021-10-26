@@ -35,5 +35,13 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<table id="grid_template">
+		<tr>
+			<td class="empId"></td>
+			<td class="empName"></td>
+			<td class="empRank"></td>
+		</tr>
+	</table>
 </body>
 </html>
