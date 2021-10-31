@@ -39,6 +39,6 @@ _____
 
 - - -
 1. 크롬의 Network 탭에서 아래 사항을 확인할 수 있다.  
-<img src="img/img_0001.png" width="600" height="230"></br>
-<img src="img/img_0002.png" width="600" height="230"></br>
+<img src="img/img_0001.png" width="600" height="330"></br>
+<img src="img/img_0002.png" width="600" height="330"></br>
 2. .
