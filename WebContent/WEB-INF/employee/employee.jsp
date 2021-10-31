@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>직원 관리</title>
+	<title>직원 관리 페이지</title>
 	<script src="/js/employee/employee.js"></script>	
 </head>
 <!-- dynamic web project : pom.xml 추가 시 아래와 같이 사용 -->
