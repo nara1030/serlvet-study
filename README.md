@@ -7,7 +7,7 @@ Servlet 스터디
 굉장히 간단한 것을 쳐보며 구현해보고자 하기에 내용 중에 틀린 것이 있을 수 있지만, 뭐...
 아래 순서대로 간략히 공부해보고자 한다(다 할 수 있을지는 미지수...).
 
-1. HTTP
+1. HTTP[1]
 2. 서블릿 프로그래밍
 3. AJAX
 4. 세션
@@ -34,4 +34,11 @@ _____
 1. [2주차](docs/week_02.md)
 2. [3주차](docs/week_03.md)
 3. [4주차](docs/week_04.md)
-4. .
+4. [5주차](docs/week_05.md)
+5. .
+
+- - -
+1. 크롬의 Network 탭에서 아래 사항을 확인할 수 있다.  
+<img src="img/img_0001.png" width="600" height="230"></br>
+<img src="img/img_0002.png" width="600" height="230"></br>
+2. .

@@ -34,9 +34,9 @@ function search(empName, empRank) {
 					*/
 					
 					trs[i] = document.querySelector("#grid_template tr").cloneNode(true); // true를 줘야 자식 노드까지 복제
-					trs[i].querySelector(".empId").innerText = data[i].id;
-					trs[i].querySelector(".empName").innerText = data[i].name;
-					trs[i].querySelector(".empRank").innerText = data[i].rank;
+					trs[i].querySelector(".emp_id").innerText = data[i].id;
+					trs[i].querySelector(".emp_name").innerText = data[i].name;
+					trs[i].querySelector(".emp_rank").innerText = data[i].rank;
 					
 					document.getElementById("grid_table").appendChild(trs[i]);
 				}

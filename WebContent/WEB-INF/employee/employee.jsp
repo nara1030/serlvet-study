@@ -38,9 +38,9 @@
 	
 	<table id="grid_template">
 		<tr>
-			<td class="empId"></td>
-			<td class="empName"></td>
-			<td class="empRank"></td>
+			<td class="emp_id"></td>
+			<td class="emp_name"></td>
+			<td class="emp_rank"></td>
 		</tr>
 	</table>
 </body>
