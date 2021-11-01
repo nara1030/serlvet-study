@@ -59,4 +59,4 @@
 	* [Can I exclude some concrete urls from `<url-pattern>` inside `<filter-mapping>`?](https://stackoverflow.com/questions/3125296/can-i-exclude-some-concrete-urls-from-url-pattern-inside-filter-mapping)
 10. [What's the difference between `Request Payload` vs `Form Data` as seen in Chrome dev tools Network tab](https://stackoverflow.com/questions/23118249/whats-the-difference-between-request-payload-vs-form-data-as-seen-in-chrome)
 11. Request Payload로 전달된 데이터를 서버에서 받는 방법은 다음과 같다.
-	* [Getting `request payload` from POST request in Java servlet](https://stackoverflow.com/questions/14525982/getting-request-payload-from-post-request-in-java-servlet)
+	* [Getting `Request Payload` from POST request in Java servlet](https://stackoverflow.com/questions/14525982/getting-request-payload-from-post-request-in-java-servlet)
