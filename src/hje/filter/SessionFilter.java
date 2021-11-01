@@ -24,19 +24,21 @@ public class SessionFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		// 세션 확인
+		// *.do 요청 시 세션 확인(/login.do 제외)
 		User user = getSession(request);
-		if (user == null) {
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/login/login.jsp");
-			requestDispatcher.forward(request, response);
-			return;
+		if (!isLoginUrl(request)) {
+			if (user == null) {
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/login/login.jsp");
+				requestDispatcher.forward(request, response);
+				return;
+			}
 		}
-		
-		// 쿠키 세팅
-		request.setAttribute("userId", user.getId());
 		
 		// 서블릿 실행
 		chain.doFilter(request, response);
+		
+		// 로그인 성공 시 쿠키 세팅
+		request.setAttribute("userId", user.getId());
 	}
 	
 	@Override
@@ -48,5 +50,13 @@ public class SessionFilter implements Filter {
 		User user = (User) req.getSession().getAttribute("user");
 		
 		return user;
+	}
+	
+	private boolean isLoginUrl(ServletRequest request) {
+		String path = ((HttpServletRequest) request).getRequestURI();
+		if (path.startsWith("/login.do")) {
+			return true;
+		}
+		return false;
 	}
 }

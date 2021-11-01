@@ -29,12 +29,12 @@ public class LoginController extends HttpServlet {
 	 * @throws IOException
 	 */
 	private void doLoginProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(req.getParameter("userId"));
+		//System.out.println(req.getParameter("userId"));
+		System.out.println(req.getReader());
 		
 		// 사용자 확인
 		Users usr = new Users();
 		List<User> users = usr.getUsers();
-		
 		
 		// 세션 저장
 		
