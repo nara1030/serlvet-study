@@ -17,7 +17,7 @@
   - JSP에 JS를 하나 심어놓는 식으로 구성되어 있었는데, 위와 같은 에러가 발생했다.
   - 크롬 Source 탭으로 확인해보니, JS 소스가 아닌 HTML이 반환되었음을 확인할 수 있었다.
   - 문제는 Filter를 타도록 설정한 URL이었다[7][8][9].
-5. POST로 보내준 데이터가 Request Payload로 전달되었다[10][11].
+5. POST로 보내준 데이터가 Request Payload로 전달되었다[10][11][12].
   - 기대했던 전달 방식은 Form Data 였다.
 ```
 
@@ -50,13 +50,39 @@
   <!-- <url-pattern>/*</url-pattern> -->
   <url-pattern>*.do</url-pattern>
 </filter-mapping>
-
 ```
 8. 관련 참고사항이다.
 	* [servlet mapping `/`와 `/*` 차이점](https://multifrontgarden.tistory.com/145)
 	* [web.xml url-pattern `/`와 `/*`의 차이점](https://lng1982.tistory.com/97)
 9. Filter를 선택적으로 타게 하는 방법은 아래와 같다.
 	* [Can I exclude some concrete urls from `<url-pattern>` inside `<filter-mapping>`?](https://stackoverflow.com/questions/3125296/can-i-exclude-some-concrete-urls-from-url-pattern-inside-filter-mapping)
-10. [What's the difference between `Request Payload` vs `Form Data` as seen in Chrome dev tools Network tab](https://stackoverflow.com/questions/23118249/whats-the-difference-between-request-payload-vs-form-data-as-seen-in-chrome)
+10. `Request Payload` vs. `Form Data`
+	* [What's the difference between `Request Payload` vs `Form Data` as seen in Chrome dev tools Network tab](https://stackoverflow.com/questions/23118249/whats-the-difference-between-request-payload-vs-form-data-as-seen-in-chrome)
+	* [Do you really understand `form data` and `request payload`?](https://developpaper.com/do-you-really-understand-form-data-and-request-payload/)
 11. Request Payload로 전달된 데이터를 서버에서 받는 방법은 다음과 같다.
 	* [Getting `Request Payload` from POST request in Java servlet](https://stackoverflow.com/questions/14525982/getting-request-payload-from-post-request-in-java-servlet)
+12. 클라이언트 및 서버 소스는 다음과 같다(상세는 다음을 참고한다).  
+```javascript
+// 클라이언트
+// Form Data
+const params = 'userId=' + id + "userPassword=' + password;
+
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+xhr.send(params);
+
+// Request Payload
+const params = 'userId=' + id + "userPassword=' + password;
+
+xhr.send(params);
+```  
+```java
+// 서버(서블릿)
+// Form Data
+@Override
+protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    System.out.println(req.getParameter("userId"));
+}
+
+// Request Payload
+
+```

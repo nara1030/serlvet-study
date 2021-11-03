@@ -29,8 +29,8 @@ public class LoginController extends HttpServlet {
 	 * @throws IOException
 	 */
 	private void doLoginProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//System.out.println(req.getParameter("userId"));
-		System.out.println(req.getReader());
+		System.out.println(req.getParameter("userId")); // Form Data로 넘어온 경우
+		//System.out.println(req.getReader()); // Request Payload로 넘어온 경우
 		
 		// 사용자 확인
 		Users usr = new Users();
