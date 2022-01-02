@@ -32,6 +32,13 @@ public class EmployeeController extends HttpServlet {
 	 * @throws IOException
 	 */
 	private void doGetProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		/*
+		 * web.xml 역할을 축소시키기 위해 front controller 역할 수행
+		 */
+		String uri = req.getRequestURI();
+		System.out.println(uri);
+		
+		
 		Employees employees = new Employees();
 		
 		String name = (req.getParameter("empName") == null) ? "" : URLDecoder.decode(req.getParameter("empName"), "UTF-8");

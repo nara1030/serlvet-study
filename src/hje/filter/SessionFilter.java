@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import hje.user.service.Users.User;
 
@@ -25,9 +26,13 @@ public class SessionFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		// *.do 요청 시 세션 확인(/login.do 제외)
-		User user = getSession(request);
+		String currentUserId = (String) getSession(request).getAttribute("userId");
 		if (!isLoginUrl(request)) {
-			if (user == null) {
+			if (currentUserId == null) {
+				// 인증 페이지로 이동 전 URL 기억
+//				String referer = ((HttpServletRequest) request).getHeader("Referer");
+//				((HttpServletRequest) request).getSession().setAttribute("prevPage", referer);
+				
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/login/login.jsp");
 				requestDispatcher.forward(request, response);
 				return;
@@ -38,18 +43,20 @@ public class SessionFilter implements Filter {
 		chain.doFilter(request, response);
 		
 		// 로그인 성공 시 쿠키 세팅
-		request.setAttribute("userId", user.getId());
+		if (currentUserId != null) {
+			System.out.println("SessionFilter: 쿠키 생성");
+			request.setAttribute("cookie", currentUserId);
+		}
 	}
 	
 	@Override
 	public void destroy() {
 	}
 	
-	private User getSession(ServletRequest request) {
+	private HttpSession getSession(ServletRequest request) {
 		HttpServletRequest req = (HttpServletRequest) request;
-		User user = (User) req.getSession().getAttribute("user");
 		
-		return user;
+		return req.getSession();
 	}
 	
 	private boolean isLoginUrl(ServletRequest request) {

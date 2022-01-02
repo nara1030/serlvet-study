@@ -10,6 +10,10 @@
 <!-- dynamic web project : pom.xml 추가 시 아래와 같이 사용 -->
 <!-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> -->
 <body>
+	<h4>
+		${sessionScope.userNm} 님 환경합니다.
+	</h4>
+	
 	<!-- HTML 네이밍 규칙 -->
 	<form id="frm">
 		<div id="search_condition">

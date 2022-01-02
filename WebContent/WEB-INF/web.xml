@@ -17,7 +17,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>getEmployee</servlet-name>
-  	<url-pattern>/employee.json</url-pattern>
+  	<url-pattern>/employee/*</url-pattern>
   </servlet-mapping>
   
   <filter>
